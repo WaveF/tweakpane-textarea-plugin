@@ -6,9 +6,6 @@ Simple textarea (multiline text input) plugin for [Tweakpane][tweakpane].\
 
 ## Installation
 
-### NPM
-
-`npm i @pangenerator/tweakpane-textarea-plugin`
 
 ### Browser
 
@@ -26,7 +23,7 @@ Simple textarea (multiline text input) plugin for [Tweakpane][tweakpane].\
 
 ```js
 import {Pane} from 'tweakpane';
-import * as TextareaPlugin from '@pangenerator/tweakpane-textarea-plugin';
+import * as TextareaPlugin from './src/tweakpane-textarea-plugin';
 
 const pane = new Pane();
 pane.registerPlugin(TextareaPlugin);
@@ -42,6 +39,7 @@ const params = {
 pane.addInput(params, 'prop', {
   view: 'textarea',
   lineCount: 6,
+  readOnly: false,
   placeholder: 'Type here...'
 }).on('change', (ev) => {
   console.log(ev.value);

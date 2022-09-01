@@ -5,6 +5,7 @@ interface Config {
 	viewProps: ViewProps;
 	lineCount: number;
 	placeholder: string;
+	readOnly: boolean;
 }
 
 const className = ClassName('txtr');
@@ -28,6 +29,7 @@ export class TextAreaView implements View {
 		inputElem.cols = 22;
 		inputElem.placeholder = config.placeholder;
 		inputElem.classList.add(className('i'));
+		if (config.readOnly) { inputElem.setAttribute('readonly', ''); }
 
 		config.viewProps.bindDisabled(inputElem);
 		this.element.appendChild(inputElem);

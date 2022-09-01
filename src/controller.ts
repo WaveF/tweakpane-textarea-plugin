@@ -8,6 +8,7 @@ export interface Config {
 	value: Value<string>;
 	viewProps: ViewProps;
 	lineCount: number;
+	readOnly: boolean;
 	placeholder: string;
 }
 
@@ -20,12 +21,14 @@ export class TextAreaController implements Controller<TextAreaView> {
 	public readonly viewProps: ViewProps;
 	public readonly lineCount: number;
 	public readonly placeholder: string;
+	public readonly readOnly: boolean;
 
 	constructor(doc: Document, config: Config) {
 		this.onInputChange_ = this.onInputChange_.bind(this);
 		this.value = config.value;
 		this.viewProps = config.viewProps;
 		this.lineCount = config.lineCount;
+		this.readOnly = config.readOnly;
 		this.placeholder = config.placeholder;
 
 		// console.log( this.lineCount )
@@ -34,6 +37,7 @@ export class TextAreaController implements Controller<TextAreaView> {
 			value: this.value,
 			viewProps: this.viewProps,
 			lineCount: this.lineCount,
+			readOnly: this.readOnly,
 			placeholder: this.placeholder,
 		});
 		this.view.inputElement.addEventListener('keyup', this.onInputChange_);

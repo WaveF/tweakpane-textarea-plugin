@@ -12,6 +12,7 @@ export interface PluginInputParams extends BaseInputParams {
 	view: 'textarea';
 	lineCount?: number;
 	placeholder?: string;
+	readOnly: boolean;
 }
 
 // NOTE: You can see JSDoc comments of `InputBindingPlugin` for details about each property
@@ -51,6 +52,7 @@ export const TweakpaneTextareaPlugin: InputBindingPlugin<
 			view: p.required.constant('textarea'),
 			lineCount: p.optional.number,
 			placeholder: p.optional.string,
+			readOnly: p.optional.boolean,
 		});
 		if (!result) {
 			return null;
@@ -86,6 +88,7 @@ export const TweakpaneTextareaPlugin: InputBindingPlugin<
 			value: args.value,
 			lineCount: args.params.lineCount ?? 3,
 			placeholder: args.params.placeholder ?? 'Enter text here',
+			readOnly: args.params.readOnly ?? false,
 			viewProps: args.viewProps,
 		});
 	},
